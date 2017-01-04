@@ -1,5 +1,6 @@
-package com.epages;
+package com.epages.checkout;
 
+import com.epages.checkout.CheckoutServiceApplication;
 import com.epages.checkout.ProductRefRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;

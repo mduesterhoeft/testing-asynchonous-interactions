@@ -25,11 +25,7 @@ public class Product {
 	@GeneratedValue(strategy = IDENTITY)
 	@Setter(NONE)
 	private Long id;
-
 	private String name;
-
 	private BigDecimal salesPrice;
-
 	private BigDecimal purchasePrice;
-
 }

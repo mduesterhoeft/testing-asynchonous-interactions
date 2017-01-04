@@ -1,16 +1,12 @@
 
-package com.epages;
+package com.epages.checkout;
 
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.amqp.rabbit.annotation.Exchange;
 import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.QueueBinding;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
-
-import com.epages.checkout.ProductRef;
-import com.epages.checkout.ProductRefRepository;
 
 @Component
 @RequiredArgsConstructor

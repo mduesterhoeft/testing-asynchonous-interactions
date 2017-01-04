@@ -1,4 +1,4 @@
-package com.epages;
+package com.epages.checkout;
 
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.Assert.fail;
@@ -6,6 +6,7 @@ import static org.springframework.amqp.core.MessageProperties.CONTENT_TYPE_JSON;
 
 import java.util.stream.Stream;
 
+import com.epages.checkout.CheckoutServiceApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.amqp.core.Message;

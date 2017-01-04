@@ -1,4 +1,4 @@
-package com.epages;
+package com.epages.checkout;
 
 import static org.springframework.amqp.core.MessageProperties.CONTENT_TYPE_JSON;
 
