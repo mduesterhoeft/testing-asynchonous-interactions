@@ -6,7 +6,6 @@ import static org.springframework.amqp.core.MessageProperties.CONTENT_TYPE_JSON;
 
 import java.util.stream.Stream;
 
-import com.epages.checkout.CheckoutServiceApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.amqp.core.Message;
@@ -20,8 +19,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.contract.verifier.messaging.boot.AutoConfigureMessageVerifier;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.epages.checkout.ProductRefRepository;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = CheckoutServiceApplication.class)
 @AutoConfigureMessageVerifier //just here to get the RabbitMockConnectionFactoryAutoConfiguration
@@ -33,7 +30,6 @@ public class ProductSubscriberHardcodedPayloadTest {
 	@Autowired
 	private ProductRefRepository productRefRepository;
 
-
 	@Test
 	public void should_handle_product_created_event() {
 		//GIVEN
@@ -44,13 +40,13 @@ public class ProductSubscriberHardcodedPayloadTest {
 				"}";
 
 		//WHEN
-		sendAndCreateMessage(payload);
+		createAndEmitEvent(payload);
 
 		//THEN
 		then(productRefRepository.exists(8L)).isTrue();
 	}
 
-	private void sendAndCreateMessage(String payload) {
+	private void createAndEmitEvent(String payload) {
 		Message message = org.springframework.amqp.core.MessageBuilder
 				.withBody(payload.getBytes())
 				.andProperties(
@@ -63,6 +59,12 @@ public class ProductSubscriberHardcodedPayloadTest {
 		((MessageListener) listenerContainer.getMessageListener()).onMessage(message);
 	}
 
+
+	/**
+	 * rabbitListenerEndpointRegistry provides access to annotated listener methods.
+	 * We use it to find the listener bound to our test.queue
+	 * @return
+	 */
 	private SimpleMessageListenerContainer getListenerContainer() {
 
 			for (MessageListenerContainer listenerContainer : this.rabbitListenerEndpointRegistry.getListenerContainers()) {

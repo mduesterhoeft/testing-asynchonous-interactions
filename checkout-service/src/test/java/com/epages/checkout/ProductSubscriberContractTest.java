@@ -1,7 +1,5 @@
 package com.epages.checkout;
 
-import com.epages.checkout.CheckoutServiceApplication;
-import com.epages.checkout.ProductRefRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +24,9 @@ public class ProductSubscriberContractTest {
 
 	@Test
 	public void should_handle_product_created_event() {
+		//emit a message from contract with label "product.created.event"
 		stubTrigger.trigger("product.created.event");
 
-		//THEN
 		then(productRefRepository.exists(9L)).isTrue();
 	}
 }
