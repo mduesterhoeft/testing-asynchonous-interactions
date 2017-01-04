@@ -1,0 +1,74 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath "org.springframework.cloud:spring-cloud-contract-gradle-plugin:1.0.2.RELEASE"
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'spring-cloud-contract'
+apply plugin: 'maven-publish'
+
+jar {
+	baseName = 'product-service'
+	version = '0.0.1-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-amqp')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-data-rest')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compileOnly('org.projectlombok:lombok')
+	runtime('com.h2database:h2')
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('org.springframework.cloud:spring-cloud-starter-contract-verifier:1.0.2.RELEASE')
+}
+
+ext {
+	stubsOutputDirRoot = file("${project.buildDir}/stubs/")
+}
+
+task stubsJar(type: Jar, dependsOn: "generateWireMockClientStubs") {
+	baseName = "${project.name}"
+	classifier = "stubs"
+	from stubsOutputDirRoot
+}
+
+artifacts {
+	archives stubsJar
+}
+
+publishing {
+	publications {
+		stubs(MavenPublication) {
+			artifactId "${project.name}"
+			groupId "com.epages"
+			artifact stubsJar
+		}
+	}
+}
+
+contracts {
+	baseClassMappings {
+		baseClassMapping('.*', 'com.epages.product.ProductPublisherTestBase')
+	}
+	stubsOutputDir = stubsOutputDirRoot
+}
+

@@ -1,0 +1,7 @@
+spring:
+  output:
+    ansi:
+      enabled: 'ALWAYS'
+stubrunner:
+  amqp:
+    enabled: true

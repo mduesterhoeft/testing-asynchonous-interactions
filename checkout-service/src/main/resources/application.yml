@@ -1,0 +1,10 @@
+stubrunner:
+  work-offline: true
+  ids: 'com.epages:product-service'
+  amqp:
+    enabled: true
+
+spring:
+  output:
+    ansi:
+      enabled: 'ALWAYS'
