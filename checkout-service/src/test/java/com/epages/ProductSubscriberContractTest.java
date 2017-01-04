@@ -1,7 +1,6 @@
 package com.epages;
 
-import static org.assertj.core.api.BDDAssertions.then;
-
+import com.epages.checkout.ProductRefRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,7 @@ import org.springframework.cloud.contract.stubrunner.StubTrigger;
 import org.springframework.cloud.contract.stubrunner.spring.AutoConfigureStubRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.epages.checkout.ProductRefRepository;
+import static org.assertj.core.api.BDDAssertions.then;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = CheckoutServiceApplication.class)
