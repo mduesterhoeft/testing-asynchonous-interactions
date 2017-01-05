@@ -18,7 +18,8 @@ public abstract class ProductPublisherTestBase {
 	private ProductEventHandler productEventHandler;
 
 	public void emitProductCreatedEvent() {
-		Product product = new Product(1L, "Awesome Jeans", BigDecimal.valueOf(49.99), BigDecimal.valueOf(25.00));
+		Product product = new Product(1L, "Awesome Jeans",
+				BigDecimal.valueOf(49.99), BigDecimal.valueOf(25.00));
 		productEventHandler.handleCreated(product);
 	}
 }
