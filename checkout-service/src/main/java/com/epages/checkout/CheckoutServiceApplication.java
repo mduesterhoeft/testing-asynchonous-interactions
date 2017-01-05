@@ -1,7 +1,6 @@
 package com.epages.checkout;
 
-import static org.springframework.amqp.core.MessageProperties.CONTENT_TYPE_JSON;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -12,11 +11,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static org.springframework.amqp.core.MessageProperties.CONTENT_TYPE_JSON;
 
 @SpringBootApplication
 public class CheckoutServiceApplication {
-
 
 	@Bean
 	public MessageConverter messageConverter(ObjectMapper objectMapper) {

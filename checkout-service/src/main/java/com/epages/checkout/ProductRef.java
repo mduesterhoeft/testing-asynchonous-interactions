@@ -1,9 +1,6 @@
 package com.epages.checkout;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,6 +14,7 @@ import static lombok.AccessLevel.PRIVATE;
 @NoArgsConstructor(access = PRIVATE) //why JPA why?
 @Getter
 @Setter
+@ToString
 public class ProductRef {
 
 	@Id

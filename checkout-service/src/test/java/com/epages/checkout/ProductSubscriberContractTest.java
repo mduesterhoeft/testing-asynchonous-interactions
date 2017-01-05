@@ -24,7 +24,7 @@ public class ProductSubscriberContractTest {
 
 	@Test
 	public void should_handle_product_created_event() {
-		//emit a message from contract with label "product.created.event"
+		//emit an event from contract with label "product.created.event"
 		stubTrigger.trigger("product.created.event");
 
 		then(productRefRepository.exists(9L)).isTrue();

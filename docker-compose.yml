@@ -1,0 +1,24 @@
+
+product:
+  build: product-service/
+  links:
+    - rabbitmq
+  environment:
+    - SPRING_RABBITMQ_HOST=rabbitmq
+  ports:
+    - "8081:8080"
+
+checkout:
+  build: checkout-service/
+  links:
+      - rabbitmq
+  environment:
+      - SPRING_RABBITMQ_HOST=rabbitmq
+  ports:
+      - "8082:8080"
+
+rabbitmq:
+  image: rabbitmq:management
+  ports:
+    - "5672:5672"
+    - "15672:15672"

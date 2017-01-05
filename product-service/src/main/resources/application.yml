@@ -1,7 +1,10 @@
+stubrunner:
+  amqp:
+    enabled: true
+
 spring:
   output:
     ansi:
       enabled: 'ALWAYS'
-stubrunner:
-  amqp:
-    enabled: true
+  rabbitmq:
+    host: ${DOCKER_IP}
