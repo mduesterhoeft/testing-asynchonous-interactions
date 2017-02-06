@@ -1,6 +1,6 @@
 # Testing asynchronous interactions in distributed systems using Spring Cloud Contract
 
-This is a sample application code of the blog post _Testing asynchronous interactions in distributed systems using Spring Cloud Contract_ [published in the epages developer blog](https://developer.epages.com/blog/2017/01/17/how-to-test-eventbased-services-using-contracts.html?utm_content=buffer5545b&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer).
+This is a sample application code of the blog post _Testing asynchronous interactions in distributed systems using Spring Cloud Contract_ [published in the epages developer blog](https://developer.epages.com/blog/2017/01/17/how-to-test-eventbased-services-using-contracts.html).
 
 It illustrates how [Spring Cloud Contract](https://cloud.spring.io/spring-cloud-contract/) can be used to test asynchronous service interactions.
 
